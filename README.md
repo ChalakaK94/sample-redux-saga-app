@@ -15,4 +15,4 @@ The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
 ###  `json-server --watch db.json --port=3004` 
-Run above script for run json server
+Run above script for start json server
