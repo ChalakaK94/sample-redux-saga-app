@@ -2,8 +2,11 @@ import {combineReducers,createStore,applyMiddleware} from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import {watcherSaga} from "./sagas/rootSaga";
 import {composeWithDevTools} from "@redux-devtools/extension";
+import UsersReducer from './reducers/users'
 
-const reducers = combineReducers({})
+const reducers = combineReducers({
+    users:UsersReducer,
+})
 
 const sagaMiddleware = createSagaMiddleware()
 
