@@ -1,25 +1,21 @@
 import {useEffect, useState} from "react";
-import axios from "axios";
+import {useDispatch, useSelector} from "react-redux";
+import {getUsers} from "../redux/actions/getUsers";
+import {createUsers} from "../redux/actions/createUsers";
 
 export const Users = () => {
+    const dispatch = useDispatch()
     const [inputValue, setInputValue] = useState("");
-    const [users, setUsers] = useState([]);
+    const users  = useSelector((state)=>state.users.data);
 
     const addUser = ()=>{
-        const newUser = {
-            id: +Date.now(),
-            name: inputValue
-        }
-
-        setUsers([...users, newUser]);
+        dispatch(createUsers(inputValue))
         setInputValue('')
     }
 
     useEffect(() => {
-        axios.get('http://localhost:3004/users').then(response=>{
-            setUsers(response.data)
-        })
-    }, []);
+       dispatch(getUsers())
+    }, [dispatch]);
     return (
         <>
             <div >Total Users: {users.length}</div>
